@@ -5,6 +5,7 @@
 </template>
 <script>
   import rem from './assets/js/rem'
+  import $ from 'jquery'
   export default {
     rem
   }

@@ -1,20 +1,23 @@
 <template>
   <div class="home">
     <Header />
+    <Content />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Header from '@/components/Public/Header.vue';
+import Content from '@/components/Content.vue';
 
 export default {
   name: 'Home',
   components: {
-    Header
+    Header,
+    Content
   }
 }
 </script>
 <style>
-  .home{width: 1200px;margin: 0 auto;}
+  
 </style>
