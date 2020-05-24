@@ -143,88 +143,7 @@
       </ul>
     </div>
     <div class="sidbar">
-        <div class="widget widget_calendar" id="calendar-2">
-            <h2>日历</h2>
-            <div class="calendar_wrap" id="calendar_wrap">
-                <table id="wp-calendar">
-                    <caption>{{date_year}}年{{date_month}}月</caption>
-                    <thead>
-                        <tr>
-                            <th title="星期一" scope="col">一</th>
-                            <th title="星期二" scope="col">二</th>
-                            <th title="星期三" scope="col">三</th>
-                            <th title="星期四" scope="col">四</th>
-                            <th title="星期五" scope="col">五</th>
-                            <th title="星期六" scope="col">六</th>
-                            <th title="星期日" scope="col">日</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <td id="prev" colspan="3"><a href="javascript:;">« 4月</a></td>
-                            <td class="pad">&nbsp;</td>
-                            <td class="pad" id="next" colspan="3">&nbsp;</td>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <Daily />
         <div class="widget">
             <h2><a href=""> 关于我</a></h2>  
             <a target="_blank" href="javascript:;" class="about_pic"><img alt="关于我" src="../assets/img/me.jpg"></a>     
@@ -288,9 +207,10 @@
 
 <script>
 import $ from 'jquery';
+import Daily from '@/components/plugins/Daily.vue';
 export default {
     components: {
-      
+      Daily
     },
     data(){
         return {
@@ -312,40 +232,14 @@ export default {
          
           $(this).children('.recommend_list').css('opacity','0');
         })
-      },
-      date(){
-        this.date_year = new Date().getFullYear();
-        /* this.date_month = new Date().getMonth()+1; */
-        this.showthirty = this.date_month == 2 ? false : true;
-        this.showthirtyone = this.date_month == 2 || this.date_month == 4 || this.date_month == 6 ||this.date_month == 6 ||this.date_month == 11 ? false :true ;
-        switch(this.date_month)
-          {
-              case 2:
-                  this.showthirtyone = false;
-                  break;
-              case 4:
-                  this.showthirtyone = false;
-                  break;
-              case 6:
-                  this.showthirtyone = false;
-                  break;
-              case 9:
-                 this.showthirtyone = false;
-                  break;
-              case 11:
-                  this.showthirtyone = false;
-                  break;
-              default:
-                  this.showthirtyone = true;
-          }
       }
+      
     },
     created() {
         
     },
     mounted() {
       this.mouseover();
-      this.date();
     },
 }
 </script>
@@ -355,7 +249,7 @@ export default {
   .recommend{width: 100%;background: #fff;box-shadow: 0 0 3px #999999;height: auto;overflow: hidden;}
   .recommend ul li{float: left; margin: 1%; display: block; text-align: center;}
   .recommend_img img, .recommend_img, .recommend_img .btn,.recommend_list{transition: all .5s;-moz-transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;}
-  .recommend_list{opacity:0;width: 80%;height: 100%;padding: 0 10%;background: rgba(0,0,0,.3);position: absolute;top: 0;left: 0;font-size: 12px;color: #fff;text-align: left;z-index: 2;}
+  .recommend_list{opacity:0;height: 100%;padding: 0 10%;background: rgba(0,0,0,.3);position: absolute;top: 0;left: 0;font-size: 12px;color: #fff;text-align: left;z-index: 2;}
   .recommend_list p::first-letter,.index_p_d::first-letter{float: left;font-size:30px; font-weight:bold;padding-right:5px;}
   .recommend_list .btn:hover{ color:#ff7200;border:solid 1px #ff7200; background:rgba(0,0,0,.3);}
   .recommend ul li .recommend_img:hover img{-webkit-filter: blur(5px);-moz-filter: blur(5px); -o-filter: blur(5px);  -ms-filter: blur(5px); filter: blur(5px);}
@@ -365,9 +259,10 @@ export default {
     }
   }
   @media screen and (max-width: 1023px) and (min-width: 100px){
-    .recommend ul li {width: 245px;}
+    .recommend ul li{width: 48%;}
+    .recommend ul li img{width: 100%;}
     .sidbar{ display:none;}
-	  .main_loop{ width:100%;}
+	  .content .main_loop{ width:101%;}
   }
   .recommend_img{font-size: 0;overflow: hidden; display: block; position: relative;}
   .recommend_img img{position: relative;z-index: 1;}
