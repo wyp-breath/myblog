@@ -2,61 +2,19 @@
   <div class="content">
     <div class="recommend">
       <ul>
-        <li>
-          <a href="javascript:;" class="recommend_img">
+        <li v-for="(item,i) of toprecommend" :key="i">
+          <a href="javascript:;" class="recommend_img"  @mouseenter="enter()" @mouseleave="leave()">
             <div class="recommend_list">
-              <p>得去年我来Caltech第一个月里与导师第三次面谈时的情形。本来按第二次面谈结束时的约定，这次要谈的是研究计划，我也做了充分准备。哪知才聊一会儿，导师突然话锋...</p>
+              <p>{{item.con}}</p>
               <div class="btn">read more</div>
             </div>
-            <img src="../assets/img/c1.jpg">
+            <img width="100%" :src="item.bgimg">
           </a>
           <strong class="recommend_title" title="问答社区演示文章">
-            <a href="javascript:;">水果系早餐制作</a>
+            <a href="javascript:;">{{item.title}}</a>
           </strong>  
-          <a href="javascript:;" class="cat">美食分享 / Food</a>
-          <div class="actor"><a target="_blank" href="javascript:;">MR.jack</a> 写在2015年03月30日</div>
-        </li>
-        <li>
-          <a href="javascript:;" class="recommend_img">
-            <div class="recommend_list">
-              <p>得去年我来Caltech第一个月里与导师第三次面谈时的情形。本来按第二次面谈结束时的约定，这次要谈的是研究计划，我也做了充分准备。哪知才聊一会儿，导师突然话锋...</p>
-              <div class="btn">read more</div>
-            </div>
-            <img src="../assets/img/c1.jpg">
-          </a>
-          <strong class="recommend_title" title="问答社区演示文章">
-            <a href="javascript:;">水果系早餐制作</a>
-          </strong>  
-          <a href="javascript:;" class="cat">美食分享 / Food</a>
-          <div class="actor"><a target="_blank" href="javascript:;">MR.jack</a> 写在2015年03月30日</div>
-        </li>
-        <li>
-          <a href="javascript:;" class="recommend_img">
-            <div class="recommend_list">
-              <p>得去年我来Caltech第一个月里与导师第三次面谈时的情形。本来按第二次面谈结束时的约定，这次要谈的是研究计划，我也做了充分准备。哪知才聊一会儿，导师突然话锋...</p>
-              <div class="btn">read more</div>
-            </div>
-            <img src="../assets/img/c1.jpg">
-          </a>
-          <strong class="recommend_title" title="问答社区演示文章">
-            <a href="javascript:;">水果系早餐制作</a>
-          </strong>  
-          <a href="javascript:;" class="cat">美食分享 / Food</a>
-          <div class="actor"><a target="_blank" href="javascript:;">MR.jack</a> 写在2015年03月30日</div>
-        </li>
-        <li>
-          <a href="javascript:;" class="recommend_img">
-            <div class="recommend_list">
-              <p>得去年我来Caltech第一个月里与导师第三次面谈时的情形。本来按第二次面谈结束时的约定，这次要谈的是研究计划，我也做了充分准备。哪知才聊一会儿，导师突然话锋...</p>
-              <div class="btn">read more</div>
-            </div>
-            <img src="../assets/img/c1.jpg">
-          </a>
-          <strong class="recommend_title" title="问答社区演示文章">
-            <a href="javascript:;">水果系早餐制作</a>
-          </strong>  
-          <a href="javascript:;" class="cat">美食分享 / Food</a>
-          <div class="actor"><a target="_blank" href="javascript:;">MR.jack</a> 写在2015年03月30日</div>
+          <a href="javascript:;" class="cat">{{item.classify}}</a>
+          <div class="actor"><a target="_blank" href="javascript:;">MR.Peng</a> 写在{{item.year}}年{{item.month}}月{{item.date}}日</div>
         </li>
       </ul>
     </div>
@@ -213,33 +171,30 @@ export default {
       Daily
     },
     data(){
-        return {
-            date_year:0,
-            date_month:12,
-            today:0,
-            showthirty:true,
-            showthirtyone:false
-        }
+      return {
+        toprecommend:[],
+      }
     },
     name: 'Content',
     methods:{ 
-      mouseover(){
-        $('.recommend_img').mouseover(function(){
-          
-          $(this).children('.recommend_list').css('opacity','1');
-        })
-        $('.recommend_img').mouseleave(function(){
-         
-          $(this).children('.recommend_list').css('opacity','0');
+      enter(){
+        $(event.target).children('.recommend_list').css('opacity','1');
+      },
+      leave(){
+        $(event.target).children('.recommend_list').css('opacity','0');
+      },
+      loadtoprecommend(){
+        this.axios.get('/toprecommend').then(result=>{
+          this.toprecommend = result.data.data;
+          console.log(result.data.data);
         })
       }
-      
     },
     created() {
-        
+      this.loadtoprecommend();
     },
     mounted() {
-      this.mouseover();
+    
     },
 }
 </script>

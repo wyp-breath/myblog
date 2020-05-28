@@ -11,5 +11,6 @@
   }
 </script>
 <style>
- @import './assets/css/reset.css';
+#app{position: relative;}
+@import './assets/css/reset.css';
 </style>
