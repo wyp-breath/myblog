@@ -39,9 +39,6 @@ export default {
           $(this).toggleClass('closed_nav_b').next().toggle();
           $('.navmenu ul').css('opacity',$('.navmenu ul').css('opacity') == 0 ? 1 : 0);
         });
-        this.axios.get('/swiper').then(result=>{
-          console.log(result.data.data);
-        })
       }
     },
     created() {

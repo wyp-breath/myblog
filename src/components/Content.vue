@@ -14,7 +14,7 @@
             <a href="javascript:;">{{item.title}}</a>
           </strong>  
           <a href="javascript:;" class="cat">{{item.classify}}</a>
-          <div class="actor"><a target="_blank" href="javascript:;">MR.Peng</a> 写在{{item.year}}年{{item.month}}月{{item.date}}日</div>
+          <div class="actor"><a target="_blank" href="javascript:;">MR.Peng</a> 写在{{item.time}}</div>
         </li>
       </ul>
     </div>
@@ -24,7 +24,7 @@
           <div class="ajax_content">
             <a href="javascript:;" class="main_title" target="_blank">去过济州岛，才明白什么叫“天然鲜”</a>
             <div class="main_others">
-              <a class="main_cat" href="javascript:;">旅途见闻 /  food</a>
+              <a class="main_cat" href="javascript:;">旅途见闻 / food</a>
               <a class="main_actor" target="_blank" href="javascript:;">MR.Jack</a>
               写在2015年03月30
             </div>
@@ -57,40 +57,31 @@
             <a class="readmore" rel=""><span>展开全部</span>read more</a>
             <div class="readloading"></div>
             <div class="main_photos">
-              <div id="gallerys" data-pswp-uid="3">
-                <a title="1111111111" data-author="by.MR.Jack" data-size="832x554" data-med-size="832x554" data-med="" href="">              
+              <div id="gallerys">
+                <a title="1111111111" href="javascript:;">              
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                <a title="1111111111" data-author="by.MR.Jack" data-size="832x554" data-med-size="832x554" data-med="" href="">
+                <a title="1111111111" href="javascript:;">
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                <a title="1111111111" data-author="by.MR.Jack" data-size="480x602" data-med-size="480x602" data-med="" href="">
+                <a title="1111111111" href="javascript:;">
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                <a title="1111111111" data-author="by.MR.Jack" data-size="903x582" data-med-size="903x582" data-med="" href="">
+                <a title="1111111111" href="javascript:;">
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                <a title="1111111111" data-author="by.MR.Jack" data-size="903x582" data-med-size="903x582" data-med="" href="">
+                <a title="1111111111" href="javascript:;">
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                <a title="1111111111" data-author="by.MR.Jack" data-size="903x582" data-med-size="903x582" data-med="" href="">  
+                <a title="1111111111" href="javascript:;">  
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                <a title="1111111111" data-author="by.MR.Jack" data-size="903x582" data-med-size="903x582" data-med="" href="">
+                <a title="1111111111" href="javascript:;">
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                <a title="1111111111" data-author="by.MR.Jack" data-size="903x582" data-med-size="903x582" data-med="" href="">
+                <a title="1111111111" href="javascript:;">
                   <img width="150" height="150" alt="1111111111" class="attachment-gallery_lightbox size-gallery_lightbox" src="../assets/img/k11.jpg">
-                  <figure>大峡谷美景如画，山峰清凉，空气清新</figure>
                 </a>
-                
               </div>
             </div>
             <div class="moretag">
@@ -114,43 +105,19 @@
             </div>
         </div>
         <div class="fixed_mok">
-            <div id="two_show" class="news_tuoch widget "> 
-                <h2><a href="javascript:;"> post</a></h2> 
+            <div id="two_show" class="news_tuoch widget"> 
+                <h2><a href="javascript:;">post</a></h2> 
                 <ul>
-                    <li>
+                    <li v-for="(item,i) of rightrecommend" :key="i">
                         <a target="_blank" href="javascript:;" class="news_pics">
-                            <img width="307" height="204" title="阳光僧林" alt="阳光森林" class="attachment-case size-case wp-post-image" src="../assets/img/cpss1.jpg">
+                            <img width="307" height="204" :title="item.imgtitle" class="attachment-case size-case wp-post-image" :src="item.imgsrc">
                         </a>
                         <div class="news_textss">
-                            <a title="" target="_blank" href="javascript:;">夏日午后的突发事件</a>
-                            <em>2016/01/28</em>
-                            <p>像所有周日那样，苏先生在家陪着我，或者说，我陪着他。这件事情有些说不...</p>
+                            <a title="" target="_blank" href="javascript:;">{{item.title}}</a>
+                            <em>{{item.time}}</em>
+                            <p>{{item.con}}</p>
                         </div>
-                    </li>     
-                    <li>
-                        <a target="_blank" href="javascript:;" class="news_pics"><img width="307" height="204" title="阳光僧林" alt="阳光森林" class="attachment-case size-case wp-post-image" src="../assets/img/cpss1.jpg"></a>
-                        <div class="news_textss">
-                            <a title="" target="_blank" href="javascript:;">夏日午后的突发事件</a>
-                            <em>2016/01/28</em>
-                            <p>像所有周日那样，苏先生在家陪着我，或者说，我陪着他。这件事情有些说不...</p>
-                        </div>
-                    </li>     
-                    <li>
-                        <a target="_blank" href="javascript:;" class="news_pics"><img width="307" height="204" title="阳光僧林" alt="阳光森林" class="attachment-case size-case wp-post-image" src="../assets/img/cpss1.jpg"></a>
-                        <div class="news_textss">
-                            <a title="" target="_blank" href="javascript:;">夏日午后的突发事件</a>
-                            <em>2016/01/28</em>
-                            <p>像所有周日那样，苏先生在家陪着我，或者说，我陪着他。这件事情有些说不...</p>
-                        </div>
-                    </li>    
-                    <li>
-                        <a target="_blank" href="javascript:;" class="news_pics"><img width="307" height="204" title="阳光僧林" alt="阳光森林" class="attachment-case size-case wp-post-image" src="../assets/img/cpss1.jpg"></a>
-                        <div class="news_textss">
-                            <a title="" target="_blank" href="javascript:;">夏日午后的突发事件</a>
-                            <em>2016/01/28</em>
-                            <p>像所有周日那样，苏先生在家陪着我，或者说，我陪着他。这件事情有些说不...</p>
-                        </div>
-                    </li>           
+                    </li>          
                 </ul> 
             </div>
             <div class="widget">
@@ -173,6 +140,7 @@ export default {
     data(){
       return {
         toprecommend:[],
+        rightrecommend:[],
       }
     },
     name: 'Content',
@@ -183,15 +151,17 @@ export default {
       leave(){
         $(event.target).children('.recommend_list').css('opacity','0');
       },
-      loadtoprecommend(){
+      loadrecommend(){
         this.axios.get('/toprecommend').then(result=>{
           this.toprecommend = result.data.data;
-          console.log(result.data.data);
-        })
+        });
+        this.axios.get('/rightrecommend').then(result=>{
+          this.rightrecommend = result.data.data;
+        });
       }
     },
     created() {
-      this.loadtoprecommend();
+      this.loadrecommend();
     },
     mounted() {
     
